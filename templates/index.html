@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Medicine Recommendation System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .diagnosis-container {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d3436 100%);
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Navbar -->
+    <nav class="bg-gray-900 text-white sticky top-0 z-50 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <img class="h-12 w-12 rounded-full border-2 border-white object-cover" 
+                             src="static/logo.png" alt="Logo">
+                    </div>
+                    <div class="ml-4">
+                        Medicine Recommendation System
+                    </div>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#" class="bg-gray-800 text-white px-3 py-2 rounded-md text-sm font-medium">Home</a>
+                        <a href="/about" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">About</a>
+                        <a href="/contact" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Contact</a>
+                        <a href="/developer" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Developer</a>
+                        <a href="/blog" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Blog</a>
+                    </div>
+                </div>
+                <div class="-mr-2 flex md:hidden">
+                    <button type="button" class="bg-gray-800 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div class="md:hidden hidden" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#" class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium">Home</a>
+                <a href="/about" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">About</a>
+                <a href="/contact" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Contact</a>
+                <a href="/developer" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Developer</a>
+                <a href="/blog" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Blog</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="max-w-4xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+        <h1 class="text-4xl font-bold text-center text-gray-800 mb-8">AI-Powered Medicine Recommendation System</h1>
+        <p class="text-lg text-center text-gray-600 mb-8">Get personalized medicine recommendations based on your symptoms.</p>
+        
+        <div class="diagnosis-container rounded-xl shadow-2xl p-8 mb-8">
+            <form id="diagnosisForm">
+                <div class="mb-6">
+                    <label for="symptoms" class="block text-lg font-medium text-gray-100 mb-2">Describe Your Symptoms:</label>
+                    <input type="text" id="symptoms" 
+                           class="w-full px-4 py-3 rounded-lg bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                           placeholder="Enter symptoms such as itching, fever, headache etc" required>
+                </div>
+                
+                
+                <div id="transcription" class="mb-6 p-4 bg-gray-800 text-white rounded-lg min-h-12"></div>
+                <div id="errorMessage" class="hidden mb-6 p-4 bg-red-600 text-white rounded-lg"></div>
+                
+                <button type="submit" 
+                        class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-4 px-4 rounded-lg transition duration-300 ease-in-out transform hover:scale-105">
+                    Predict Condition
+                </button>
+            </form>
+        </div>
+        
+        <!-- Results Section -->
+        <div id="resultsSection" class="hidden">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Our AI System Results</h2>
+            
+            <div class="flex flex-wrap justify-center gap-4 mb-8">
+                <button onclick="showResult('disease')" 
+                        class="result-btn bg-orange-500 hover:bg-orange-600 text-white py-3 px-6 rounded-lg shadow-2xl">Disease</button>
+                <button onclick="showResult('description')" 
+                        class="result-btn bg-blue-500 hover:bg-blue-600 text-white py-3 px-6 rounded-lg shadow-2xl">Description</button>
+                <button onclick="showResult('precautions')" 
+                        class="result-btn bg-purple-500 hover:bg-purple-600 text-white py-3 px-16 rounded-lg shadow-2xl">Precaution</button>
+                <button onclick="showResult('medications')" 
+                        class="result-btn bg-pink-500 hover:bg-pink-600 text-white py-3 px-6 rounded-lg shadow-2xl">Medications</button>
+                <button onclick="showResult('workout')" 
+                        class="result-btn bg-green-500 hover:bg-green-600 text-white py-3 px-6 rounded-lg shadow-2xl">Workouts</button>
+                <button onclick="showResult('diet')" 
+                        class="result-btn bg-yellow-500 hover:bg-yellow-600 text-white py-3 px-6 rounded-lg shadow-2xl">Diets</button>
+            </div>
+            
+            <div id="resultContent" class="diagnosis-container rounded-xl shadow-2xl p-8">
+                <!-- Result content will be displayed here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // DOM Elements
+        const diagnosisForm = document.getElementById('diagnosisForm');
+        const symptomsInput = document.getElementById('symptoms');
+        const transcriptionDiv = document.getElementById('transcription');
+        const errorMessageDiv = document.getElementById('errorMessage');
+        const resultsSection = document.getElementById('resultsSection');
+        const resultContentDiv = document.getElementById('resultContent');
+        const mobileMenuButton = document.querySelector('[aria-controls="mobile-menu"]');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        // Store API response data
+        let diagnosisData = null;
+        
+        // Toggle mobile menu
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Form submission handler
+        diagnosisForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const symptoms = symptomsInput.value.trim();
+            if (!symptoms) {
+                showError('Please enter symptoms');
+                return;
+            }
+            
+            try {
+                const response = await fetch('/predict', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ symptoms: symptoms })
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                diagnosisData = data;
+                displayResults(data);
+                
+            } catch (error) {
+                console.error('Error:', error);
+                showError('Failed to get diagnosis. Please try again.');
+            }
+        });
+        
+        // Speech recognition
+        document.getElementById('startSpeechRecognition').addEventListener('click', () => {
+            if ('webkitSpeechRecognition' in window) {
+                const recognition = new webkitSpeechRecognition();
+                recognition.lang = 'en-US';
+                
+                recognition.onresult = (event) => {
+                    const transcript = event.results[0][0].transcript;
+                    transcriptionDiv.textContent = transcript;
+                    symptomsInput.value = transcript;
+                };
+                
+                recognition.onerror = (event) => {
+                    console.error('Speech recognition error', event.error);
+                    showError('Speech recognition failed. Please try again.');
+                };
+                
+                recognition.start();
+            } else {
+                showError('Speech recognition is not supported in your browser.');
+            }
+        });
+        
+        // Display results from API
+        function displayResults(data) {
+            resultsSection.classList.remove('hidden');
+            showResult('disease'); // Show disease by default
+            
+            // Scroll to results
+            resultsSection.scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // Show specific result type
+        function showResult(type) {
+            if (!diagnosisData) return;
+            
+            let content = '';
+            
+            switch(type) {
+                case 'disease':
+                    content = `<h3 class="text-2xl font-bold text-white mb-4">Predicted Disease</h3>
+                              <p class="text-gray-200">${diagnosisData.disease}</p>`;
+                    break;
+                    
+                case 'description':
+                    content = `<h3 class="text-2xl font-bold text-white mb-4">Description</h3>
+                              <p class="text-gray-200">${diagnosisData.description}</p>`;
+                    break;
+                    
+                case 'precautions':
+                    content = `<h3 class="text-2xl font-bold text-white mb-4">Precautions</h3>
+                              <ul class="list-disc pl-5 text-gray-200 space-y-2">${
+                                diagnosisData.precautions.map(item => `<li>${item}</li>`).join('')
+                              }</ul>`;
+                    break;
+                    
+                case 'medications':
+                    content = `<h3 class="text-2xl font-bold text-white mb-4">Medications</h3>
+                              <ul class="list-disc pl-5 text-gray-200 space-y-2">${
+                                diagnosisData.medications.map(item => `<li>${item}</li>`).join('')
+                              }</ul>`;
+                    break;
+                    
+                case 'workout':
+                    content = `<h3 class="text-2xl font-bold text-white mb-4">Recommended Workouts</h3>
+                              <ul class="list-disc pl-5 text-gray-200 space-y-2">${
+                                diagnosisData.workout.map(item => `<li>${item}</li>`).join('')
+                              }</ul>`;
+                    break;
+                    
+                case 'diet':
+                    content = `<h3 class="text-2xl font-bold text-white mb-4">Recommended Diet</h3>
+                              <ul class="list-disc pl-5 text-gray-200 space-y-2">${
+                                diagnosisData.diet.map(item => `<li>${item}</li>`).join('')
+                              }</ul>`;
+                    break;
+            }
+            
+            resultContentDiv.innerHTML = content;
+        }
+        
+        // Show error message
+        function showError(message) {
+            errorMessageDiv.textContent = message;
+            errorMessageDiv.classList.remove('hidden');
+            setTimeout(() => errorMessageDiv.classList.add('hidden'), 5000);
+        }
+    </script>
+</body>
+</html>
