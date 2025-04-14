@@ -3,45 +3,118 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <title>About Us | Medicine Recommendation System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+            colors: {
+              primary: '#3B82F6',
+              secondary: '#10B981',
+              dark: '#1F2937',
+              light: '#F9FAFB',
+            }
+          }
+        }
+      }
+    </script>
   </head>
-  <body>
-    <div class="container my-4 mt-4">
+  <body class="bg-gray-50 font-sans">
+    <div class="max-w-4xl mx-auto px-4 py-12">
+      <div class="text-center mb-12">
+        <h1 class="text-4xl font-bold text-dark mb-4">About Medicine Recommendation System</h1>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">Bridging innovative technology with compassionate healthcare for your well-being</p>
+      </div>
 
+      <div class="space-y-12">
+        <!-- Vision Section -->
+        <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+          <div class="flex items-start">
+            <div class="bg-blue-100 p-3 rounded-lg mr-6">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+              </svg>
+            </div>
+            <div>
+              <h2 class="text-2xl font-semibold text-dark mb-4">Our Vision</h2>
+              <p class="text-gray-600 leading-relaxed">We believe everyone deserves access to reliable health information. Our vision is to break down barriers in healthcare by providing intuitive tools that put health knowledge directly in your hands, enabling you to make informed decisions about your well-being.</p>
+            </div>
+          </div>
+        </div>
 
-     <h3> About Us</h3>
+        <!-- Who We Are Section -->
+        <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+          <div class="flex items-start">
+            <div class="bg-green-100 p-3 rounded-lg mr-6">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+              </svg>
+            </div>
+            <div>
+              <h2 class="text-2xl font-semibold text-dark mb-4">Who We Are</h2>
+              <p class="text-gray-600 leading-relaxed">Our team combines medical expertise with technological innovation. Doctors, data scientists, and healthcare advocates work together to create solutions that simplify complex medical information. We're united by our passion for making healthcare more accessible and understandable for everyone.</p>
+            </div>
+          </div>
+        </div>
 
-<p>Welcome to Medical Health center, where health meets technology for a brighter, healthier future.
-</p>
-<h3>Our Vision</h3>
+        <!-- Mission Section -->
+        <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+          <div class="flex items-start">
+            <div class="bg-purple-100 p-3 rounded-lg mr-6">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              </svg>
+            </div>
+            <div>
+              <h2 class="text-2xl font-semibold text-dark mb-4">Our Mission</h2>
+              <p class="text-gray-600 leading-relaxed">We're dedicated to transforming how people understand their health. Through advanced AI technology, we provide personalized health insights based on your symptoms, coupled with trustworthy educational resources to help you navigate your healthcare journey with confidence.</p>
+            </div>
+          </div>
+        </div>
 
-<p>We envision a world where access to healthcare information is not just a luxury but a fundamental right. Our journey began with a simple yet powerful idea: to empower individuals with the knowledge and tools they need to take control of their health.
-</p>
-<h3>Who We Are
-</h3>
-<p>We are a passionate team of healthcare professionals, data scientists, and technology enthusiasts who share a common goal: to make healthcare accessible, understandable, and personalized for you. With years of experience in both healthcare and cutting-edge technology, we've come together to create this platform as a testament to our commitment to your well-being.
-</p>
-<h3>Our Mission</h3>
+        <!-- How We Do It Section -->
+        <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+          <div class="flex items-start">
+            <div class="bg-yellow-100 p-3 rounded-lg mr-6">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-yellow-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+            </div>
+            <div>
+              <h2 class="text-2xl font-semibold text-dark mb-4">How We Do It</h2>
+              <p class="text-gray-600 leading-relaxed">Our intelligent system analyzes patterns across thousands of medical cases. When you share your symptoms, our advanced algorithms compare them against our comprehensive medical database to suggest possible conditions, helping you understand potential health concerns before consulting a professional.</p>
+            </div>
+          </div>
+        </div>
 
-<p>At this website, our mission is to provide you with a seamless and intuitive platform that leverages the power of artificial intelligence and machine learning. We want to assist you in identifying potential health concerns based on your reported symptoms, all while offering a wealth of educational resources to enhance your health literacy.
-</p>
-<h3>How We Do It</h3>
+        <!-- Priority Section -->
+        <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+          <div class="flex items-start">
+            <div class="bg-red-100 p-3 rounded-lg mr-6">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+              </svg>
+            </div>
+            <div>
+              <h2 class="text-2xl font-semibold text-dark mb-4">Your Well-being, Our Priority</h2>
+              <p class="text-gray-600 leading-relaxed">We go beyond basic symptom checking. For every potential condition identified, we provide detailed explanations, practical self-care strategies, medication guidance, nutritional advice, and appropriate exercise recommendations - giving you a complete toolkit for better health management.</p>
+            </div>
+          </div>
+        </div>
 
-<p>Our platform utilizes a robust machine learning model trained on a vast dataset of symptoms and diseases. By inputting your symptoms, our system generates accurate predictions about potential illnesses, allowing you to make informed decisions about your health.
-</p>
-<h3>Your Well-being, Our Priority</h3>
-
-<p>Your health is our top priority. We understand that navigating the complexities of healthcare can be daunting. That's why we've gone the extra mile to provide not only accurate predictions but also comprehensive information about each disease. You'll find descriptions, recommended precautions, medications, dietary advice, and workout tips to support your journey to better health.
-</p>
-<h3>Join Us on this Journey
-</h3>
-<p>We invite you to explore our platform, engage with our educational content, and take control of your health journey. Together, we can revolutionize the way individuals access and understand healthcare information.
-</p>
-<p>Thank you for choosing [Your Website Name] as your trusted health companion. We are here to empower you with knowledge, support, and a brighter, healthier future.
-</p>
-
+        <!-- Join Us Section -->
+        <div class="bg-gradient-to-r from-primary to-secondary p-8 rounded-xl text-white">
+          <h2 class="text-2xl font-semibold mb-4">Join Our Health Revolution</h2>
+          <p class="leading-relaxed mb-6">Take the first step toward empowered healthcare. Explore our resources, discover insights about your health, and become an active participant in your wellness journey. Together, we're changing how people access and understand medical information.</p>
+          <p class="font-medium">Thank you for trusting Medical Health Center as your partner in health. We're committed to providing you with reliable knowledge and supportive tools for a healthier tomorrow.</p>
+        </div>
+      </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
   </body>
 </html>
