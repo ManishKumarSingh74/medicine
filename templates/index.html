@@ -15,8 +15,7 @@
         .diagnosis-container {
             background: linear-gradient(135deg, #1a1a1a 0%, #2d3436 100%);
         }
-        
-        /* Custom scrollbar */
+     
         ::-webkit-scrollbar {
             width: 8px;
         }
@@ -33,7 +32,6 @@
     </style>
 </head>
 <body class="bg-gray-100">
-    <!-- Navbar -->
     <nav class="bg-gray-900 text-white sticky top-0 z-50 shadow-lg">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
@@ -65,8 +63,6 @@
                 </div>
             </div>
         </div>
-
-        <!-- Mobile menu -->
         <div class="md:hidden hidden" id="mobile-menu">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                 <a href="#" class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium">Home</a>
@@ -77,8 +73,6 @@
             </div>
         </div>
     </nav>
-
-    <!-- Main Content -->
     <div class="max-w-4xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
         <h1 class="text-4xl font-bold text-center text-gray-800 mb-8">AI-Powered Medicine Recommendation System</h1>
         <p class="text-lg text-center text-gray-600 mb-8">Get personalized medicine recommendations based on your symptoms.</p>
@@ -102,8 +96,7 @@
                 </button>
             </form>
         </div>
-        
-        <!-- Results Section -->
+  
         <div id="resultsSection" class="hidden">
             <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Our AI System Results</h2>
             
@@ -123,13 +116,11 @@
             </div>
             
             <div id="resultContent" class="diagnosis-container rounded-xl shadow-2xl p-8">
-                <!-- Result content will be displayed here -->
             </div>
         </div>
     </div>
 
     <script>
-        // DOM Elements
         const diagnosisForm = document.getElementById('diagnosisForm');
         const symptomsInput = document.getElementById('symptoms');
         const transcriptionDiv = document.getElementById('transcription');
@@ -138,16 +129,13 @@
         const resultContentDiv = document.getElementById('resultContent');
         const mobileMenuButton = document.querySelector('[aria-controls="mobile-menu"]');
         const mobileMenu = document.getElementById('mobile-menu');
-        
-        // Store API response data
+ 
         let diagnosisData = null;
-        
-        // Toggle mobile menu
+  
         mobileMenuButton.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
-        
-        // Form submission handler
+
         diagnosisForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             
@@ -179,8 +167,7 @@
                 showError('Failed to get diagnosis. Please try again.');
             }
         });
-        
-        // Speech recognition
+
         document.getElementById('startSpeechRecognition').addEventListener('click', () => {
             if ('webkitSpeechRecognition' in window) {
                 const recognition = new webkitSpeechRecognition();
@@ -202,17 +189,14 @@
                 showError('Speech recognition is not supported in your browser.');
             }
         });
-        
-        // Display results from API
+ 
         function displayResults(data) {
             resultsSection.classList.remove('hidden');
-            showResult('disease'); // Show disease by default
-            
-            // Scroll to results
+            showResult('disease');
+
             resultsSection.scrollIntoView({ behavior: 'smooth' });
         }
-        
-        // Show specific result type
+
         function showResult(type) {
             if (!diagnosisData) return;
             
@@ -260,8 +244,7 @@
             
             resultContentDiv.innerHTML = content;
         }
-        
-        // Show error message
+
         function showError(message) {
             errorMessageDiv.textContent = message;
             errorMessageDiv.classList.remove('hidden');
